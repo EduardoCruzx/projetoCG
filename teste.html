@@ -45,7 +45,7 @@
 				container = document.createElement( 'div' );
 				document.body.appendChild( container );
 				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 2000 );
-				camera.position.z = 250;
+				camera.position.z = 1000;
 				// scene
 				scene = new THREE.Scene();
 				var ambient = new THREE.AmbientLight( 0x101030 );
@@ -74,13 +74,13 @@
 				} );
 				// model
 				var loader = new THREE.OBJLoader( manager );
-				loader.load( 'male02.obj', function ( object ) {
+				loader.load( 'elephant.obj', function ( object ) {
 					object.traverse( function ( child ) {
 						if ( child instanceof THREE.Mesh ) {
 							child.material.map = texture;
 						}
 					} );
-					object.position.y = - 95;
+					object.position.y = - 300;
 					scene.add( object );
 				}, onProgress, onError );
 				//
@@ -90,7 +90,7 @@
 				container.appendChild( renderer.domElement );
 				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 				//
-				window.addEventListener( 'resize', onWindowResize, false );
+				window.addEventListener( 'resize', onWindowResize, true );
 			}
 			function onWindowResize() {
 				windowHalfX = window.innerWidth / 2;
@@ -100,8 +100,8 @@
 				renderer.setSize( window.innerWidth, window.innerHeight );
 			}
 			function onDocumentMouseMove( event ) {
-				mouseX = ( event.clientX - windowHalfX ) / 2;
-				mouseY = ( event.clientY - windowHalfY ) / 2;
+				mouseX = ( event.clientX - windowHalfX ) * 2.5;
+				mouseY = ( event.clientY - windowHalfY );
 			}
 			//
 			function animate() {
