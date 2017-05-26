@@ -45,7 +45,9 @@
 			var controls;
 			var flag = true;
 			var flag2 = true;
-			var object;
+			var male;
+			var male2;
+			var flagscale = true;
 			
 			//inicialização do cg
 			init();
@@ -97,18 +99,18 @@
 
 				// model
 				var loader = new THREE.OBJLoader( manager );
-				var createObj = function ( object ) {
+				loader.load( 'Homem/male02.obj', function ( object ) {
 					object.traverse( function ( child ) {
 						if ( child instanceof THREE.Mesh) {
 							child.material.map = texture;
 						}
 					} );
+					male = object;
 					object.position.x = -100;
 					object.position.y = -100;
 					object.rotation.y = 1;					
 					scene.add( object );
-				}
-				loader.load( 'Homem/male02.obj', createObj, onProgress, onError );
+				}, onProgress, onError );
 
 				var loader2 = new THREE.OBJLoader( manager );				
 				loader2.load( 'Homem/male02.obj', function ( object2 ) {
@@ -117,9 +119,9 @@
 							child.material.map = texture;
 						}
 					} );
+					male2 = object2;
 					object2.position.y = -50;
 					object2.position.x = 100;
-					object2.rotation.z = 1.6;
 					object2.scale.x = 0.5;
 					object2.scale.z = 0.5;
 					object2.scale.y = 0.5;					
@@ -157,9 +159,42 @@
 				}
 				else {
 					camera.position.x -= 5;
-				}			
+				}	
 
-				camera.position.y += ( - mouseY - camera.position.y ) * .005;
+
+				if (camera.position.y > 500) {
+					flag2 = false;
+				}
+				if (camera.position.y < -500) {
+					flag2 = true;
+				}
+
+				if (flag2 == true) {
+					camera.position.y += 3;
+				}
+				else {
+					camera.position.y -= 3;
+				}
+
+				if (male2.scale.y > 3) {
+					flagscale = false;
+				}
+				if (male2.scale.y < 0.01) {
+					flagscale = true;
+				}
+
+				if (flagscale == true) {
+					male2.scale.x += 0.01;
+					male2.scale.y += 0.01;
+					male2.scale.z += 0.01;					
+				}
+				else {
+					male2.scale.x -= 0.005;
+					male2.scale.y -= 0.005;
+					male2.scale.z -= 0.005;
+				}
+
+				male.rotation.y += 0.1;
 				camera.lookAt( scene.position );
 				renderer.render(scene, camera);
 			};
