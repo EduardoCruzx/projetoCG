@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>Projeto CG Atividade 2</title>
+		<title>Projeto CG Atividade 3</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<style>
@@ -23,9 +23,10 @@
 		</style>
 	</head>
 
-	<body>
+	<body onclick="changeCamera()">
 		<div id="info">
-			<p>Parte 2: Visualização de 2 objetos com animação na mesma cena.</p>
+			<p>Parte 3: Visualização de 4 objetos com animação na mesma cena e mais de uma câmera.</p>
+			<p>Clique com o Mouse para trocar de câmera.</p>
 		</div>
 
 		<!--Import da biblioteca com funções e métodos pré-determinados.-->
@@ -38,16 +39,25 @@
 
 		<script>
 			var container;
-			var camera, scene, renderer;
+			var camera1, camera2, camera3, camera4, scene, renderer;
 			var mouseX = 0, mouseY = 0;
 			var windowHalfX = window.innerWidth / 2;
 			var windowHalfY = window.innerHeight / 2;
 			var controls;
-			var flag = true;
-			var flag2 = true;
+			var flagCamMale = true;
+			var flagCamFemale = true;
+			var flagCamFemale2 = true;
+			var flagCamMale2 = true;
 			var male;
 			var male2;
+			var female;
+			var female2;
 			var flagscale = true;
+			var camMale;
+			var camMale2;
+			var camFemale;
+			var camFemale2;
+			var changeCam;
 			
 			//inicialização do cg
 			init();
@@ -56,8 +66,15 @@
 			function init() {
 				container = document.createElement('div');
 				document.body.appendChild( container );
-				camera = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 5000 );
-				camera.position.z = 300;
+				camera1 = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 5000 );
+				camera1.position.z = 1000;
+				camera2 = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 5000 );
+				camera2.position.z = 1000;
+				camera3 = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 5000 );
+				camera3.position.z = 1000;
+				camera4 = new THREE.PerspectiveCamera( 45, window.innerWidth / window.innerHeight, 1, 5000 );
+				camera4.position.z = 1000;
+
 				// scene
 				scene = new THREE.Scene();
 
@@ -72,9 +89,21 @@
 				directionalLight2.position.set( 0, -1, 0 );
 				scene.add( directionalLight2 );
 
+				var directionalLight3 = new THREE.DirectionalLight( 0xffeedd );
+				directionalLight3.position.set( 0, 1, 0 );
+				scene.add( directionalLight3 );
+
+				var directionalLight4 = new THREE.DirectionalLight( 0xffeedd );
+				directionalLight4.position.set( 0, 0, -1 );
+				scene.add( directionalLight4 );
+
 				var directionalLight5 = new THREE.DirectionalLight( 0xffeedd );
 				directionalLight5.position.set( -1, 0, 0 );
 				scene.add( directionalLight5 );
+
+				var directionalLight6 = new THREE.DirectionalLight( 0xffeedd );
+				directionalLight6.position.set( 1, 0, 0 );
+				scene.add( directionalLight6 );
 
 				// texture
 				var manager = new THREE.LoadingManager();
@@ -106,9 +135,8 @@
 						}
 					} );
 					male = object;
-					object.position.x = -100;
+					object.position.x = -200;
 					object.position.y = -100;
-					object.rotation.y = 1;					
 					scene.add( object );
 				}, onProgress, onError );
 
@@ -120,19 +148,50 @@
 						}
 					} );
 					male2 = object2;
-					object2.position.y = -50;
-					object2.position.x = 100;
-					object2.scale.x = 0.5;
-					object2.scale.z = 0.5;
-					object2.scale.y = 0.5;					
+					object2.position.y = -100;
+					object2.position.x = 200;
+					object2.position.z = -400;					
 					scene.add( object2 );
+				}, onProgress, onError );
+
+				var loader3 = new THREE.OBJLoader( manager );
+				loader3.load( 'Mulher/female02.obj', function ( object3 ) {
+					object3.traverse( function ( child ) {
+						if ( child instanceof THREE.Mesh) {
+							child.material.map = texture;
+						}
+					} );
+					female = object3;
+					object3.position.x = 200;
+					object3.position.y = -100;										
+					scene.add( object3 );
+				}, onProgress, onError );
+
+				var loader4 = new THREE.OBJLoader( manager );
+				loader4.load( 'Mulher/female02.obj', function ( object4 ) {
+					object4.traverse( function ( child ) {
+						if ( child instanceof THREE.Mesh) {
+							child.material.map = texture;
+						}
+					} );
+					female2 = object4;
+					object4.position.x = -200;
+					object4.position.y = -100;
+					object4.position.z = -400;
+					scene.add( object4 );
 				}, onProgress, onError );
 
 				renderer = new THREE.WebGLRenderer();
 				renderer.setSize( window.innerWidth, window.innerHeight );
 				container.appendChild( renderer.domElement );
-				document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+				document.addEventListener( 'mouseDown', onDocumentMouseDown, false );
 				window.addEventListener( 'resize', onWindowResize, true );
+
+				camMale = camera1;
+				camMale2 = camera2;
+				camFemale2 = camera3;
+				camFemale = camera4;
+				changeCam = camMale;
 			}
 			function onWindowResize() {
 				windowHalfX = window.innerWidth / 2;
@@ -141,62 +200,108 @@
 				camera.updateProjectionMatrix();
 				renderer.setSize( window.innerWidth, window.innerHeight );
 			}
-			function onDocumentMouseMove( event ) {
-				mouseX = ( event.clientX - windowHalfX ) * 5;
-				mouseY = ( event.clientY - windowHalfY ) * 5;
+			function onDocumentMouseDown( event ) {
+				changeCamera();
 			}
+
+			function changeCamera() {
+				if (changeCam == camMale) {
+					changeCam = camMale2;
+				} 
+				else {
+					if (changeCam == camMale2) {
+						changeCam = camFemale;
+					} 
+					else {
+						if (changeCam == camFemale) {
+							changeCam = camFemale2;
+						} 
+						else {
+							changeCam = camMale;
+						}
+					}
+				}
+			}
+
 			function render() {
 				requestAnimationFrame( render );
-				if (camera.position.x > 500) {
-					flag = false;
+
+				//CamObj1				
+				if (camMale.position.x > 500) {
+					flagCamMale = false;
 				}
-				if (camera.position.x < -500) {
-					flag = true;
+				if (camMale.position.x < -1500) {
+					flagCamMale = true;
 				}
 
-				if (flag == true) {
-					camera.position.x += 5;
+				if (flagCamMale == true) {
+					camMale.position.x += 5;
 				}
 				else {
-					camera.position.x -= 5;
+					camMale.position.x -= 5;
 				}	
-
-
-				if (camera.position.y > 500) {
-					flag2 = false;
-				}
-				if (camera.position.y < -500) {
-					flag2 = true;
-				}
-
-				if (flag2 == true) {
-					camera.position.y += 3;
-				}
-				else {
-					camera.position.y -= 3;
-				}
-
-				if (male2.scale.y > 3) {
-					flagscale = false;
-				}
-				if (male2.scale.y < 0.01) {
-					flagscale = true;
-				}
-
-				if (flagscale == true) {
-					male2.scale.x += 0.01;
-					male2.scale.y += 0.01;
-					male2.scale.z += 0.01;					
-				}
-				else {
-					male2.scale.x -= 0.005;
-					male2.scale.y -= 0.005;
-					male2.scale.z -= 0.005;
-				}
-
+				camMale.position.y = 500;
 				male.rotation.y += 0.1;
-				camera.lookAt( scene.position );
-				renderer.render(scene, camera);
+				camMale.lookAt( male.position );
+
+				
+				// CamObj2
+				if (camMale2.position.x > 900) {
+					flagCamMale2 = false;
+				}
+				if (camMale2.position.x < 100) {
+					flagCamMale2 = true;
+				}
+
+				if (flagCamMale2 == true) {
+					camMale2.position.x += 5;
+				}
+				else {
+					camMale2.position.x -= 5;
+				}	
+				camMale2.position.y = 250;
+				camMale2.position.z = -1000;
+				male2.rotation.y -= 0.2;
+				camMale2.lookAt( male2.position );
+
+				// CamObj3
+				if (camFemale.position.x > 1500) {
+					flagCamFemale = false;
+				}
+				if (camFemale.position.x < 500) {
+					flagCamFemale = true;
+				}
+
+				if (flagCamFemale == true) {
+					camFemale.position.x += 5;
+				}
+				else {
+					camFemale.position.x -= 5;
+				}	
+				camFemale.position.y = 500;
+				female.rotation.y += 0.1;
+				camFemale.lookAt( female.position );
+
+				// CamObj4
+				if (camFemale2.position.x > 1500) {
+					flagCamFemale2 = false;
+				}
+				if (camFemale2.position.x < -500) {
+					flagCamFemale2 = true;
+				}
+
+				if (flagCamFemale2 == true) {
+					camFemale2.position.x += 5;
+				}
+				else {
+					camFemale2.position.x -= 5;
+				}	
+				camFemale2.position.y = 1500;
+				camFemale2.position.z = -1000;
+				female2.rotation.y -= 0.01;
+				camFemale2.lookAt( female2.position );	
+
+				renderer.render(scene, changeCam);
 			};
 		</script>
 

@@ -27,3 +27,15 @@ Parte 2: Visualização de 2 objetos com animação na mesma cena
         - O primeiro objeto agora gira em seu eixo y durante a animação.
         - O segundo objeto agora aumenta e diminui de tamanho durante a animação.
 
+Parte 3: Visualização de 4 objetos com animação na mesma cena e mais de uma câmera.
+
+    - Nesta atividade, adicionamos mais dois objetos na cena, alteramos as posições para que os 4 objetos ficassem
+      como um quadrado.
+
+    - Adicionamos luzes na posição negativa de cada dimensão, ficando 6 no total, para uma melhor Visualização
+      dos objetos quando alguma câmera trazeira for selecionada.
+
+    - Adicionamos mais 3  câmera, ficando 4 no total. E ao invés de a câmera olhar para a cena, agora ela olha 
+      para um objeto, cada uma olhando para um.
+
+    - Também adicionamos a troca de câmera por meio de um clique com o botão esquerdo do mouse.
