@@ -24,6 +24,6 @@ Parte 2: Visualização de 2 objetos com animação na mesma cena
         - Foi retirada a função de alteração de câmera no eixo y com o mouse, para evitar confusão do 
         usuário. No lugar foi colocada uma movimentação automática.
 
-        - O primeiro objeto agora gira em seu eixo y durante a anaimação.
+        - O primeiro objeto agora gira em seu eixo y durante a animação.
         - O segundo objeto agora aumenta e diminui de tamanho durante a animação.
 
