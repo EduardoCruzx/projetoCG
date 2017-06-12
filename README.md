@@ -39,3 +39,18 @@ Parte 3: Visualização de 4 objetos com animação na mesma cena e mais de uma 
       para um objeto, cada uma olhando para um.
 
     - Também adicionamos a troca de câmera por meio de um clique com o botão esquerdo do mouse.
+
+Parte 4: Visualização de objeto movendo-se em curva.
+
+    - Nessa etapa adicionamos um caminho curvo, utilizando uma Curva de Bezier e setamos o objeto Female2 para
+      percorrer essa curva.
+
+    - Para uma melhor visualização, distribuímos os outros objetos em linha reta, para contrastar com que
+      percorre a curva. 
+
+    - Para as próximas fases planejamos replicar as curvas em mais objetos e adicionar o chão e o céu, para melhorar
+      a imersão.
+
+    Obs: A fase 4 foi finalizada no dia 09/06/17 como previsto. Porém ao tentar entregar, percebemos que o campus
+    estava sem internet (que só voltou no dia seguinte), e só por motivos de esquecimento, não entregamos até hoje.
+    Porém, pode ser observado que a data de alteração dos arquivos, é de 09/06/17.

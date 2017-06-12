@@ -58,6 +58,10 @@
 			var camFemale;
 			var camFemale2;
 			var changeCam;
+			var curve = 0;
+			var tangent = new THREE.Vector3();
+			var move = 0;
+			var axis = new THREE.Vector3();
 			
 			//inicialização do cg
 			init();
@@ -135,7 +139,7 @@
 						}
 					} );
 					male = object;
-					object.position.x = -200;
+					object.position.x = 0;
 					object.position.y = -100;
 					scene.add( object );
 				}, onProgress, onError );
@@ -148,9 +152,8 @@
 						}
 					} );
 					male2 = object2;
-					object2.position.y = -100;
 					object2.position.x = 200;
-					object2.position.z = -400;					
+					object2.position.y = -100;					
 					scene.add( object2 );
 				}, onProgress, onError );
 
@@ -175,11 +178,31 @@
 						}
 					} );
 					female2 = object4;
-					object4.position.x = -200;
+					object4.position.x = -300;
 					object4.position.y = -100;
-					object4.position.z = -400;
 					scene.add( object4 );
 				}, onProgress, onError );
+
+				curve = new THREE.CubicBezierCurve3(
+					new THREE.Vector3( -500, -100,  0),
+					new THREE.Vector3( 300, 200, 500 ),
+					new THREE.Vector3( 0, 200, 500),
+					new THREE.Vector3( -500, -100, -1000)
+				);
+				
+				var curveMaterial = new THREE.LineBasicMaterial({
+					transparent: true,
+					opacity: 0,
+				});
+				
+				var curveGeometry = new THREE.Geometry();
+				var curvePoints = curve.getPoints(50);
+				for (var i = 0; i < curvePoints.length; i++) {
+					curveGeometry.vertices.push(curvePoints[i]);
+				}
+				
+				var curveLine = new THREE.Line(curveGeometry, curveMaterial);
+				scene.add(curveLine);
 
 				renderer = new THREE.WebGLRenderer();
 				renderer.setSize( window.innerWidth, window.innerHeight );
@@ -223,6 +246,16 @@
 				}
 			}
 
+			function movement() {
+				if (move <= 1) {
+					female.position.copy( curve.getPointAt(move) );
+					move += 0.001;
+				} 
+				else {
+					move = 0;
+				}
+			}
+
 			function render() {
 				requestAnimationFrame( render );
 
@@ -241,7 +274,7 @@
 					camMale.position.x -= 5;
 				}	
 				camMale.position.y = 500;
-				male.rotation.y += 0.1;
+				male.rotation.y += 0.05;
 				camMale.lookAt( male.position );
 
 				
@@ -261,8 +294,10 @@
 				}	
 				camMale2.position.y = 250;
 				camMale2.position.z = -1000;
-				male2.rotation.y -= 0.2;
+				male2.rotation.y -= 0.05;
 				camMale2.lookAt( male2.position );
+
+				movement();	
 
 				// CamObj3
 				if (camFemale.position.x > 1500) {
@@ -298,8 +333,7 @@
 				}	
 				camFemale2.position.y = 1500;
 				camFemale2.position.z = -1000;
-				female2.rotation.y -= 0.01;
-				camFemale2.lookAt( female2.position );	
+				camFemale2.lookAt( female2.position );
 
 				renderer.render(scene, changeCam);
 			};
