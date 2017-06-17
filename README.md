@@ -59,7 +59,7 @@ Parte 5: Pessoa se movimentando no interior de uma cabana de pedra.
 
     - O ambiente da cabana será retangular
 
-    - Utilizamos dois objetos carregados de arquivos: uma pessoa, um inseto e quatro tochas (das quais saem fumaça do fogo)
+    - Utilizamos três objetos carregados de arquivos: uma pessoa, um inseto e quatro tochas (das quais saem fumaça do fogo)
 
     - Como forma simples inserimos um círculo em uma das paredes, que simula um portal para outra dimensão
 
