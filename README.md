@@ -63,4 +63,5 @@ Parte 5: Pessoa se movimentando no interior de uma cabana de pedra.
 
     - Como forma simples inserimos um círculo em uma das paredes, que simula um portal para outra dimensão
 
-    - A pessoa se move dentro do quarto; o portal se move sobre a parede de acordo com a entrada do usuário via teclado (setas direcionais) 			e o inseto se movimenta de um lado para outro utilizando a curva de bézier.
+    - A pessoa se move dentro do quarto; o portal se move sobre a parede de acordo com a entrada do usuário via teclado (setas direcionais)
+      e o inseto se movimenta de um lado para outro utilizando a curva de bézier.
