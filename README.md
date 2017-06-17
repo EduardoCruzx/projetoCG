@@ -55,7 +55,7 @@ Parte 4: Visualização de objeto movendo-se em curva.
     estava sem internet (que só voltou no dia seguinte), e só por motivos de esquecimento, não entregamos até hoje.
     Porém, pode ser observado que a data de alteração dos arquivos, é de 09/06/17.
 
-Parte 5: pessoa se movimentando no interior de uma cabana de pedra.
+Parte 5: Pessoa se movimentando no interior de uma cabana de pedra.
 
     - O ambiente da cabana será retangular
 
