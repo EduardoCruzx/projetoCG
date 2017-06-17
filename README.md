@@ -54,3 +54,13 @@ Parte 4: Visualização de objeto movendo-se em curva.
     Obs: A fase 4 foi finalizada no dia 09/06/17 como previsto. Porém ao tentar entregar, percebemos que o campus
     estava sem internet (que só voltou no dia seguinte), e só por motivos de esquecimento, não entregamos até hoje.
     Porém, pode ser observado que a data de alteração dos arquivos, é de 09/06/17.
+
+Parte 5: pessoa se movimentando no interior de uma cabana de pedra.
+
+    - O ambiente da cabana será retangular
+
+    - Utilizamos dois objetos carregados de arquivos: uma pessoa, um inseto e quatro tochas (das quais saem fumaça do fogo)
+
+    - Como forma simples inserimos um círculo em uma das paredes, que simula um portal para outra dimensão
+
+    - A pessoa se move dentro do quarto; o portal se move sobre a parede de acordo com a entrada do usuário via teclado (setas direcionais) 			e o inseto se movimenta de um lado para outro utilizando a curva de bézier.
