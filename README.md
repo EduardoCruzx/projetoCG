@@ -4,6 +4,8 @@ Projeto CG BCC-So 2017/1
 Alunos: Eduardo Cruz, João Franciso de Paula, Gabriel Piovani
 
 Projeto Final:
+
+
     -Bibliote utilizada: WebGL
     -Divisão de tarefas: A teoria e o temas foram discutidos informalmente entre os membros do grupo através de um grupo de chat criado e de conversas pessoais, assim como os métodos a serem implementados em cada fase.Como o aluno Eduardo Cruz possía um previo conhecimento na linguagem JavaScript(a linguagem utilizada pela biblioteca), ele ficou a cargo da implementação dos métodos discutidos.
     -As nossas maiores dificuldades foram de abstrair os conceitos passados em aula e passá-los para a lógica especificada em cada fase, e no fim, juntar e criar um projeto abrangindo tudo e que fizesse algum sentido(um cenário plausível).Ao longo das fases algumas mudanças e adaptações foram feitas.
