@@ -198,9 +198,12 @@
 
 				scene = new THREE.Scene();
 
-				var light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.75 );
+				var light = new THREE.HemisphereLight( 0xeeeeff, 0x777788, 0.5 );
 				light.position.set( 0.5, 1, 0.75 );
 				scene.add( light );
+
+				
+
 
 				controls = new THREE.PointerLockControls( cameraControl );
 				scene.add( controls.getObject() );
@@ -364,7 +367,14 @@
 				fires[0].mesh.position.set( -2000, 300, -2000 );
 				fires[1].mesh.position.set( -1000, 300, -2000 );
 				fires[2].mesh.position.set( 2000, 300, -2000 );
-				fires[3].mesh.position.set( 1000, 300, -2000 );												
+				fires[3].mesh.position.set( 1000, 300, -2000 );	
+
+				var lights = [];
+				for (var i = 0; i < 1; i++) {
+					lights.push(new THREE.PointLight( 0xf4d142, 1, 5000));
+					lights[i].position.set = (0, 450, -1500);
+					scene.add( lights[i] );																
+				} 
 
 				document.addEventListener( 'mouseDown', onDocumentMouseDown, false );
 				window.addEventListener( 'resize', onWindowResize, true );
@@ -692,6 +702,7 @@
 				cube = new THREE.Mesh( new THREE.CubeGeometry( 200, 200, 200 ), materialCube );
 				cube.position.y = 100;
 				cube.position.z -= 1000;
+				cube.castShadow = true;
 				// add the object to the scene
 				scene.add( cube );
 
@@ -717,7 +728,7 @@
 				spotLight.shadow.camera.far = 4000;
 				spotLight.shadow.camera.fov = 30;
 
-				scene.add( spotLight );				
+				// scene.add( spotLight );				
 			}
 
 			function walls() {
