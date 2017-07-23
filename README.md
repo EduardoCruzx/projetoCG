@@ -5,11 +5,20 @@ Alunos: Eduardo Cruz, João Franciso de Paula, Gabriel Piovani
 
 Projeto Final:
 
-Animação de um homem(corpo articulado) com uma tocha acesa tentando sair de uma caverna usando a iluminação da tocha como auxílio para a locomoção
+
+Animação de uma exploração de uma caverna, com um inimigo(esqueleto estilo Minecraft) se movimentando com movimentos aleatórios, um item objetivo em destaque e quatro estatuas, uma de cada lado e uma música tema de guerra nas estrelas de fundo.
     
+    -Funcionalidades e Requisitos Atendidos:
+    
+        . Objeto articulado com o movimentos aleatórios: esqueleto estilo Minecraft
+        . Interaçõ com o usuário através de comandos do teclado e do mouse
+        . Posições variadas de câmera: mudança através do click do mouse 
+        . 4 objetos imóveis além do objeto articulado 
+    -O arquivo principal é o index.html, abra ele com o navegador de sua preferência, ele abrirá uma tela com as instruções e comandos.
+    -Comandos: W-A-S-D para se movimentar horizontalmente, tecla ESPAÇO para pular, um click com o botão esquerdo do mouse para trocar de camera e movimentos do mouse para mudar o ângulo de visão.
     -Bibliote utilizada: WebGL
     -Divisão de tarefas: A teoria e o temas foram discutidos informalmente entre os membros do grupo através de um grupo de chat criado e de conversas pessoais, assim como os métodos a serem implementados em cada fase.A princípio não tinhamos uma definição exata de taredas, porém, como o aluno Eduardo Cruz possía uma maior facilidade na linguagem JavaScript(a linguagem utilizada pela biblioteca), ele ficou a cargo da implementação dos métodos discutidos durante as últimas etapas.
-    -As nossas maiores dificuldades foram de abstrair os conceitos passados em aula e passá-los para a lógica especificada em cada fase, e no fim, juntar e criar um projeto abrangindo tudo e que fizesse algum sentido(um cenário plausível).Contudo a maior dificuldade foi aprender a utilizar a biblioteca WebGl, tanto que ao longo do semestre alguma mudanças foram feitas no trabalho conforme fomos nos adaptando a biblioteca.
+    -As nossas maiores dificuldades foram abstrair os conceitos passados em aula e passá-los para a lógica especificada em cada fase, e no fim, juntar e criar um projeto abrangindo tudo e que fizesse algum sentido(um cenário plausível).Contudo a maior dificuldade foi aprender a utilizar a biblioteca WebGl, tanto que ao longo do semestre alguma mudanças foram feitas no trabalho conforme fomos nos adaptando a biblioteca.
 
 
 
