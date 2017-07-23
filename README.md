@@ -8,12 +8,12 @@ Projeto Final:
 
 Animação de uma exploração de uma caverna, com um inimigo(esqueleto estilo Minecraft) se movimentando com movimentos aleatórios, um item objetivo em destaque e quatro estatuas, uma de cada lado e uma música tema de guerra nas estrelas de fundo.
     
-    -Funcionalidades e Requisitos Atendidos:
-    
-        . Objeto articulado com o movimentos aleatórios: esqueleto estilo Minecraft
+    -Funcionalidades e Requisitos Atendidos
+       . Objeto articulado com o movimentos aleatórios: esqueleto estilo Minecraft
         . Interaçõ com o usuário através de comandos do teclado e do mouse
         . Posições variadas de câmera: mudança através do click do mouse 
         . 4 objetos imóveis além do objeto articulado 
+  
     -O arquivo principal é o index.html, abra ele com o navegador de sua preferência, ele abrirá uma tela com as instruções e comandos.
     -Comandos: W-A-S-D para se movimentar horizontalmente, tecla ESPAÇO para pular, um click com o botão esquerdo do mouse para trocar de camera e movimentos do mouse para mudar o ângulo de visão.
     -Bibliote utilizada: WebGL
