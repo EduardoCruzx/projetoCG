@@ -5,10 +5,11 @@ Alunos: Eduardo Cruz, João Franciso de Paula, Gabriel Piovani
 
 Projeto Final:
 
-
+Animação de um homem(corpo articulado) com uma tocha acesa tentando sair de uma caverna usando a iluminação da tocha como auxílio para a locomoção
+    
     -Bibliote utilizada: WebGL
-    -Divisão de tarefas: A teoria e o temas foram discutidos informalmente entre os membros do grupo através de um grupo de chat criado e de conversas pessoais, assim como os métodos a serem implementados em cada fase.Como o aluno Eduardo Cruz possía um previo conhecimento na linguagem JavaScript(a linguagem utilizada pela biblioteca), ele ficou a cargo da implementação dos métodos discutidos.
-    -As nossas maiores dificuldades foram de abstrair os conceitos passados em aula e passá-los para a lógica especificada em cada fase, e no fim, juntar e criar um projeto abrangindo tudo e que fizesse algum sentido(um cenário plausível).Ao longo das fases algumas mudanças e adaptações foram feitas.
+    -Divisão de tarefas: A teoria e o temas foram discutidos informalmente entre os membros do grupo através de um grupo de chat criado e de conversas pessoais, assim como os métodos a serem implementados em cada fase.A princípio não tinhamos uma definição exata de taredas, porém, como o aluno Eduardo Cruz possía uma maior facilidade na linguagem JavaScript(a linguagem utilizada pela biblioteca), ele ficou a cargo da implementação dos métodos discutidos durante as últimas etapas.
+    -As nossas maiores dificuldades foram de abstrair os conceitos passados em aula e passá-los para a lógica especificada em cada fase, e no fim, juntar e criar um projeto abrangindo tudo e que fizesse algum sentido(um cenário plausível).Contudo a maior dificuldade foi aprender a utilizar a biblioteca WebGl, tanto que ao longo do semestre alguma mudanças foram feitas no trabalho conforme fomos nos adaptando a biblioteca.
 
 
 
